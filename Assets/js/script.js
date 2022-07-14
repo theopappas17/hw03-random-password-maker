@@ -52,8 +52,11 @@ function promptUppercase() {
 function promptSpecial() {
   let specChar = confirm('Do you want to include special characters?')
   if (specChar == true && base != '') {
-    generatePassword();
-  } else {
+    base+= special;
+  }
+    else if (specChar == false && base != '') {
+      base+= '';
+    } else {
     alert('The password must contain some character');
   }
 }
@@ -68,9 +71,10 @@ function generatePassword() {
 
 // Write password to the #password input
 function writePassword() {
+  var passwordText = document.querySelector("#password");
+  passwordText.value = '';
   passwordLength();
   var password = generatePassword();
-  var passwordText = document.querySelector("#password");
   passwordText.value = password;
 }
 
