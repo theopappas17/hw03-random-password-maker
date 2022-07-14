@@ -12,7 +12,7 @@ let key = '';
 
 function passwordLength() {
   numChar = parseInt(prompt('How many characters do you want your password to contain? Choose a number between 8 and 128.'));
-  if (numChar <= 8 || numChar >= 128) {
+  if (numChar < 8 || numChar > 128 || numChar == '') {
     alert('Please enter a number between 8 and 128!');
   } else {
   promptNumbers();
@@ -51,13 +51,8 @@ function promptUppercase() {
 
 function promptSpecial() {
   let specChar = confirm('Do you want to include special characters?')
-  if (specChar == true) {
-    base+= special;
-    generatePassword(); 
-    return base;
-  } else if (specChar == true && base != '') {
+  if (specChar == true && base != '') {
     generatePassword();
-    return base;
   } else {
     alert('The password must contain some character');
   }
