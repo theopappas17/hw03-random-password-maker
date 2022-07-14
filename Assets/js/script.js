@@ -8,7 +8,7 @@ const numbers = "0123456789";
 const special = "!@#$%^&*+-";
 let base = '';
 let numChar;
-let key;
+let key = '';
 
 function passwordLength() {
   numChar = parseInt(prompt('How many characters do you want your password to contain? Choose a number between 8 and 128.'));
@@ -65,18 +65,19 @@ function promptSpecial() {
 
 function generatePassword() {
   for (i = 0; i < numChar; i++){
+    console.log(numChar);
     key+= base.charAt(Math.floor(Math.random()*base.length))
   }
-  console.log(key);
+  return key;
 }
 
-// // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-//   passwordText.value = password;
-// }
+// Write password to the #password input
+function writePassword() {
+  passwordLength();
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+  passwordText.value = password;
+}
 
-// //Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
-passwordLength();
+//Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
