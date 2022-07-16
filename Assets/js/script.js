@@ -12,7 +12,7 @@ let key = '';
 
 function passwordLength() {
   numChar = parseInt(prompt('How many characters do you want your password to contain? Choose a number between 8 and 128.'));
-  if (numChar < 8 || numChar > 128 || numChar == '') {
+  if (numChar < 8 || numChar > 128 || Number.isNaN(numChar)) {
     alert('Please enter a number between 8 and 128!');
   } else {
   promptNumbers();
@@ -62,8 +62,8 @@ function promptSpecial() {
 }
 
 function generatePassword() {
+  key = '';
   for (i = 0; i < numChar; i++){
-    console.log(numChar);
     key+= base.charAt(Math.floor(Math.random()*base.length))
   }
   return key;
